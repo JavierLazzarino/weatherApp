@@ -12,14 +12,18 @@ async function getClientLatitudeAndLogitude() {
 async function getCurrentWeather(req, res) {
   const { lat, lon } = req.lat && req.lon ? req : await getClientLatitudeAndLogitude();
 
-  const open_weather_api_url = `${OPEN_WEATHER_MAP_API_URL}/weather?appid=${OPEN_WEATHER_MAP_API_KEY}&lat=${lat}&lon=${lon}&units=metric`;
+  const url = `${OPEN_WEATHER_MAP_API_URL}/weather?appid=${OPEN_WEATHER_MAP_API_KEY}&lat=${lat}&lon=${lon}&units=metric`;
 
-  let response = {}
+  let response = {};
 
-  await axios.get(open_weather_api_url)
+  await axios.get(url)
     .then((result) => {
       const { main, description, icon } = result.data.weather[0];
-      const { temp_min: minimumTemperature, temp_max: maximumTemperature, humidity } = result.data.main;
+      const {
+        temp_min: minimumTemperature,
+        temp_max: maximumTemperature,
+        humidity,
+      } = result.data.main;
       const { sunrise, sunset } = result.data.sys;
 
       response = {
@@ -53,11 +57,11 @@ async function getCurrentWeather(req, res) {
 async function getForecastWeather(req, res) {
   const { lat, lon } = req.lat && req.lon ? req : await getClientLatitudeAndLogitude();
 
-  const open_weather_api_url = `${OPEN_WEATHER_MAP_API_URL}/onecall?appid=${OPEN_WEATHER_MAP_API_KEY}&exclude=hourly,current,minutely&lat=${lat}&lon=${lon}&units=metric`;
+  const url = `${OPEN_WEATHER_MAP_API_URL}/onecall?appid=${OPEN_WEATHER_MAP_API_KEY}&exclude=hourly,current,minutely&lat=${lat}&lon=${lon}&units=metric`;
 
-  let response = {}
+  let response = {};
 
-  await axios.get(open_weather_api_url)
+  await axios.get(url)
     .then((result) => {
       const data = [];
       result.data.daily.slice(1, 6).forEach((day) => {
@@ -107,13 +111,14 @@ async function getCurrentWeatherForCity(req, res) {
       lat: response.data.lat,
       lon: response.data.lon,
     };
-    await getCurrentWeather(req, res);
   } else {
     return res.status(response.status).json({
       data: response.data,
       message: response.message,
     });
   }
+
+  return getCurrentWeather(req, res);
 }
 
 async function getForecastWeatherForCity(req, res) {
@@ -127,13 +132,14 @@ async function getForecastWeatherForCity(req, res) {
       lat: response.data.lat,
       lon: response.data.lon,
     };
-    await getForecastWeather(req, res);
   } else {
     return res.status(response.status).json({
       data: response.data,
       message: response.message,
     });
   }
+
+  return getForecastWeather(req, res);
 }
 
 module.exports = {
@@ -141,4 +147,4 @@ module.exports = {
   getCurrentWeatherForCity,
   getForecastWeather,
   getForecastWeatherForCity,
-}
+};

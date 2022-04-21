@@ -1,63 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="13" failures="4" errors="0" time="1.466">
-  <testsuite name="/current" errors="0" failures="4" skipped="0" timestamp="2022-04-21T02:33:43" time="0.58" tests="6">
-    <testcase classname="/current GET when calling the current endpoint with no parameters responds with the client&apos;s location weather" name="/current GET when calling the current endpoint with no parameters responds with the client&apos;s location weather" time="0.019">
+<testsuites name="jest tests" tests="13" failures="5" errors="0" time="2.537">
+  <testsuite name="CustomError" errors="0" failures="0" skipped="0" timestamp="2022-04-21T17:44:24" time="1.043" tests="2">
+    <testcase classname="CustomError when receiving parameters should return the set values" name="CustomError when receiving parameters should return the set values" time="0.006">
+    </testcase>
+    <testcase classname="CustomError without parameters should return the default values" name="CustomError without parameters should return the default values" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="getCityLatitudeAndLogitude" errors="0" failures="1" skipped="0" timestamp="2022-04-21T17:44:24" time="1.376" tests="3">
+    <testcase classname="getCityLatitudeAndLogitude with a unique city name responds with its latitude and longitude" name="getCityLatitudeAndLogitude with a unique city name responds with its latitude and longitude" time="0.006">
+    </testcase>
+    <testcase classname="getCityLatitudeAndLogitude with a city name with more than one result responds with a message and and array of cities" name="getCityLatitudeAndLogitude with a city name with more than one result responds with a message and and array of cities" time="0.001">
+    </testcase>
+    <testcase classname="getCityLatitudeAndLogitude with a city name with no results responds with a message" name="getCityLatitudeAndLogitude with a city name with no results responds with a message" time="0.002">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 404
+Received: undefined
+    at Object.&lt;anonymous&gt; (/Users/lazzarin/Documents/Entrevistas/Telecom/code/weatherApp-service/test/unit/location.spec.js:67:22)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="/healthcheck" errors="0" failures="0" skipped="0" timestamp="2022-04-21T17:44:24" time="1.638" tests="1">
+    <testcase classname="/healthcheck GET responds with an alive message" name="/healthcheck GET responds with an alive message" time="0.026">
+    </testcase>
+  </testsuite>
+  <testsuite name="/location" errors="0" failures="0" skipped="0" timestamp="2022-04-21T17:44:24" time="1.666" tests="1">
+    <testcase classname="/location GET responds with the client&apos;s latitude and logitude" name="/location GET responds with the client&apos;s latitude and logitude" time="0.027">
+    </testcase>
+  </testsuite>
+  <testsuite name="/current" errors="0" failures="4" skipped="0" timestamp="2022-04-21T17:44:24" time="1.812" tests="6">
+    <testcase classname="/current GET when calling the current endpoint with no parameters responds with the client&apos;s location weather" name="/current GET when calling the current endpoint with no parameters responds with the client&apos;s location weather" time="0.029">
       <failure>Error: expect(received).toBe(expected) // Object.is equality
 
 Expected: 200
 Received: 404
-    at Object.&lt;anonymous&gt; (/Users/lazzarin/Documents/Entrevistas/Telecom/code/service/test/integration/weather.spec.js:52:24)
+    at Object.&lt;anonymous&gt; (/Users/lazzarin/Documents/Entrevistas/Telecom/code/weatherApp-service/test/integration/weather.spec.js:52:24)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)</failure>
     </testcase>
-    <testcase classname="/current GET when calling the current endpoint with a unique city name responds with the city&apos;s weather" name="/current GET when calling the current endpoint with a unique city name responds with the city&apos;s weather" time="0.004">
+    <testcase classname="/current GET when calling the current endpoint with a unique city name responds with the city&apos;s weather" name="/current GET when calling the current endpoint with a unique city name responds with the city&apos;s weather" time="0.012">
       <failure>Error: expect(received).toBe(expected) // Object.is equality
 
 Expected: 200
 Received: 404
-    at Object.&lt;anonymous&gt; (/Users/lazzarin/Documents/Entrevistas/Telecom/code/service/test/integration/weather.spec.js:76:24)
+    at Object.&lt;anonymous&gt; (/Users/lazzarin/Documents/Entrevistas/Telecom/code/weatherApp-service/test/integration/weather.spec.js:76:24)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)</failure>
     </testcase>
-    <testcase classname="/current GET when calling the current endpoint with a city name that has more than one result it fails with a message" name="/current GET when calling the current endpoint with a city name that has more than one result it fails with a message" time="0.004">
+    <testcase classname="/current GET when calling the current endpoint with a city name that has more than one result it fails with a message" name="/current GET when calling the current endpoint with a city name that has more than one result it fails with a message" time="0.01">
     </testcase>
-    <testcase classname="/forecast GET when calling the forecast endpoint with no parameters responds with the client&apos;s location forecasted weather" name="/forecast GET when calling the forecast endpoint with no parameters responds with the client&apos;s location forecasted weather" time="0.003">
+    <testcase classname="/forecast GET when calling the forecast endpoint with no parameters responds with the client&apos;s location forecasted weather" name="/forecast GET when calling the forecast endpoint with no parameters responds with the client&apos;s location forecasted weather" time="0.012">
       <failure>Error: expect(received).toBe(expected) // Object.is equality
 
 Expected: 200
 Received: 404
-    at Object.&lt;anonymous&gt; (/Users/lazzarin/Documents/Entrevistas/Telecom/code/service/test/integration/weather.spec.js:126:24)
+    at Object.&lt;anonymous&gt; (/Users/lazzarin/Documents/Entrevistas/Telecom/code/weatherApp-service/test/integration/weather.spec.js:126:24)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)</failure>
     </testcase>
-    <testcase classname="/forecast GET when calling the forecast endpoint with a unique city name responds with the city&apos;s forecasted weather" name="/forecast GET when calling the forecast endpoint with a unique city name responds with the city&apos;s forecasted weather" time="0.003">
+    <testcase classname="/forecast GET when calling the forecast endpoint with a unique city name responds with the city&apos;s forecasted weather" name="/forecast GET when calling the forecast endpoint with a unique city name responds with the city&apos;s forecasted weather" time="0.008">
       <failure>Error: expect(received).toBe(expected) // Object.is equality
 
 Expected: 200
 Received: 404
-    at Object.&lt;anonymous&gt; (/Users/lazzarin/Documents/Entrevistas/Telecom/code/service/test/integration/weather.spec.js:148:24)
+    at Object.&lt;anonymous&gt; (/Users/lazzarin/Documents/Entrevistas/Telecom/code/weatherApp-service/test/integration/weather.spec.js:148:24)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)</failure>
     </testcase>
-    <testcase classname="/forecast GET when calling the current endpoint with a city name that has more than one result it fails with a message" name="/forecast GET when calling the current endpoint with a city name that has more than one result it fails with a message" time="0.004">
-    </testcase>
-  </testsuite>
-  <testsuite name="/healthcheck" errors="0" failures="0" skipped="0" timestamp="2022-04-21T02:33:43" time="0.221" tests="1">
-    <testcase classname="/healthcheck GET responds with an alive message" name="/healthcheck GET responds with an alive message" time="0.014">
-    </testcase>
-  </testsuite>
-  <testsuite name="/location" errors="0" failures="0" skipped="0" timestamp="2022-04-21T02:33:44" time="0.239" tests="1">
-    <testcase classname="/location GET responds with the client&apos;s latitude and logitude" name="/location GET responds with the client&apos;s latitude and logitude" time="0.01">
-    </testcase>
-  </testsuite>
-  <testsuite name="getCityLatitudeAndLogitude" errors="0" failures="0" skipped="0" timestamp="2022-04-21T02:33:44" time="0.104" tests="3">
-    <testcase classname="getCityLatitudeAndLogitude with a unique city name responds with its latitude and longitude" name="getCityLatitudeAndLogitude with a unique city name responds with its latitude and longitude" time="0.003">
-    </testcase>
-    <testcase classname="getCityLatitudeAndLogitude with a city name with more than one result responds with a message and and array of cities" name="getCityLatitudeAndLogitude with a city name with more than one result responds with a message and and array of cities" time="0.003">
-    </testcase>
-    <testcase classname="getCityLatitudeAndLogitude with a city name with no results responds with a message" name="getCityLatitudeAndLogitude with a city name with no results responds with a message" time="0.001">
-    </testcase>
-  </testsuite>
-  <testsuite name="CustomError" errors="0" failures="0" skipped="0" timestamp="2022-04-21T02:33:44" time="0.085" tests="2">
-    <testcase classname="CustomError when receiving parameters should return the set values" name="CustomError when receiving parameters should return the set values" time="0.002">
-    </testcase>
-    <testcase classname="CustomError without parameters should return the default values" name="CustomError without parameters should return the default values" time="0">
+    <testcase classname="/forecast GET when calling the current endpoint with a city name that has more than one result it fails with a message" name="/forecast GET when calling the current endpoint with a city name that has more than one result it fails with a message" time="0.007">
     </testcase>
   </testsuite>
 </testsuites>

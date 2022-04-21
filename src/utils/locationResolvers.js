@@ -31,7 +31,7 @@ async function getCityLatitudeAndLogitude(city) {
 
   await axios.get(url)
     .then((result) => {
-      if (!result.data) {
+      if (result.data.length === 0) {
         throw new CustomError(`We were not able to find a city under the name of ${city}`, 404, null);
       } else if (result.data.length > 1) {
         result.data.forEach((cityDefinition) => {

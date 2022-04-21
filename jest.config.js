@@ -18,6 +18,6 @@ module.exports = {
   ],
   reporters: [
     'default',
-    'jest-junit'
-  ]
+    'jest-junit',
+  ],
 };
