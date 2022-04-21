@@ -10,6 +10,8 @@ For a better and easier coding experience I have used [**nodemon**](https://node
 
 *(1) As recommended by the requester*
 
+I could have created self-signed certificates (same as nothing) to handle https connections, although most of current architectures have a Load Balancer or CDN in front which already encrypt communication.
+
 ## Assets reusage
 
 Besides the usage of frameworks, libraries and the files *.eslintrc*, *.gitignore* and *babel.config.js*, everything was created from scratch (haven't copied files nor configurations from anywhere).
@@ -49,3 +51,8 @@ yarn test
 
 - I had problems with supertest and some of the weather endpoints (/v1/current/* and /v1/forecast/*) which are reacheable from any REST client. Apparently is something that has been reported by users [many times before](https://github.com/visionmedia/supertest/issues/255) but still not addressed.
 - Obviously the **.env** file is one of those normally included on .gitignore, although this time I left it on the repository to ease your testing and review. Regarding the "leaked" API is not something I particullary care because this is a coding exercise and once the review finishes I'll completely remove the repository and delete my API credentials.
+
+## Room for improvement
+
+- Although is pretty optimized, both Service and UI could use GraphQL to reduce communication payloads.
+- Implement the solution with TypeScript instead of plain JavaScript.
